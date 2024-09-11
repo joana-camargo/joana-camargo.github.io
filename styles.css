@@ -1,15 +1,18 @@
 nav {
     display: flex;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: 'Roboto', sans-serif;
 }
 
 nav div {
     display: flex;
+    margin: 25px;
 }
 
 nav p {
-    margin: 10px;
+    margin: 25px;
     font-size: 20px;
+    padding-left: 10px;
 }
 
 nav a {
@@ -19,4 +22,8 @@ nav a {
 
 nav a:hover {
     font-size: 23px;
+}
+
+body h1 {
+    font-family: 'Roboto', sans-serif;
 }
