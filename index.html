@@ -21,9 +21,52 @@
 </nav>
 
 <body>
-    <h1 id="medium">Medium</h1>
-    <h1 id="behance">Behance</h1>
-    <h1 id="github">GitHub</h1>
+    <div>
+        <h1 id="medium">Medium</h1>
+
+        <div id="medium-posts"></div>
+
+        <script>
+            async function fetchMediumPosts() {
+                const rssUrl = 'https://medium.com/feed/@joana-camargo';
+
+                try {
+                    const response = await fetch(rssUrl);
+                    const data = await response.text();
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(data, 'text/xml');
+                    const items = xml.querySelectorAll('item');
+                    let html = '';
+
+                    items.forEach((item) => {
+                        const title = item.querySelector('title').textContent;
+                        const link = item.querySelector('link').textContent;
+                        const pubDate = item.querySelector('pubDate').textContent;
+                        const description = item.querySelector('description').textContent;
+
+                        html += `<h2><a href="${link}" target="_blank">${title}</a></h2>`;
+                        html += `<p><strong>Publicado em:</strong> ${new Date(pubDate).toLocaleDateString()}</p>`;
+                        html += `<p>${description}</p>`;
+                        html += `<hr>`;
+                    });
+
+                    document.getElementById('medium-posts').innerHTML = html;
+                } catch (error) {
+                    console.error('Erro ao buscar os posts:', error);
+                }
+            }
+
+            fetchMediumPosts();
+        </script>
+
+    </div>
+    <div>
+        <h1 id="behance">Behance</h1>
+    </div>
+    <div>
+        <h1 id="github">GitHub</h1>
+    </div>
+
 </body>
 
 </html>
