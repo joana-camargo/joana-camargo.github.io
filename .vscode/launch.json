@@ -8,7 +8,8 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "file:///D:/Joana/Documents/GitHub/portifolio/index.html",
+           // "url": "file:///D:/Joana/Documents/GitHub/portifolio/index.html",
+           "url": "file:///D:/Joana/Documents/GitHub/joana-camargo.github.io/index.html",
             "webRoot": "${workspaceFolder}"
         },
      

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joana-Camargo</title>
-    <link rel="stylesheet" href="styles.css">´
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="medium.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -21,43 +22,12 @@
 </nav>
 
 <body>
+   
     <div>
         <h1 id="medium">Medium</h1>
-
         <div id="medium-posts"></div>
+        <script src="medium.js"></script>
 
-        <script>
-            async function fetchMediumPosts() {
-                const rssUrl = 'https://medium.com/feed/@joana-camargo';
-
-                try {
-                    const response = await fetch(rssUrl);
-                    const data = await response.text();
-                    const parser = new DOMParser();
-                    const xml = parser.parseFromString(data, 'text/xml');
-                    const items = xml.querySelectorAll('item');
-                    let html = '';
-                    items.forEach((item) => {
-                        const title = item.querySelector('title').textContent;
-                        const link = item.querySelector('link').textContent;
-                        const pubDate = item.querySelector('pubDate').textContent;
-                        const description = item.querySelector('description').textContent;
-                        html += `
-        <h2><a href="${link}" target="_blank">${title}</a></h2>`;
-                        html += `
-        <p><strong>Publicado em:</strong> ${new Date(pubDate).toLocaleDateString()}</p>`;
-                        html += `
-        <p>${description}</p>`;
-                        html += `
-        <hr>`;
-                    });
-                    document.getElementById('medium-posts').innerHTML = html;
-                } catch (error) {
-                    console.error('Erro ao buscar os posts:', error);
-                }
-            }
-            fetchMediumPosts();
-        </script>
     </div>
     <div>
         <h1 id="behance">Behance</h1>
